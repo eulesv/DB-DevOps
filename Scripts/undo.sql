@@ -2,14 +2,10 @@
 --  DO NOT BREAK VERSIONING SCHEME
 --**********************************
 
-DECLARE @check BIT
 -- Version AFTER changes
-EXEC @check = cicd.CheckVersion '11111111-1111-1111-1111-111111111111'
+EXEC cicd.CheckVersion '11111111-1111-1111-1111-111111111111'
 IF @@ERROR <> 0
-BEGIN
-    RAISERROR('Unknown version', 18, 0)
     SET NOEXEC ON
-END
 GO
 
 --********************
