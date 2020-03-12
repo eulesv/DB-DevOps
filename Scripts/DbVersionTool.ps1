@@ -5,10 +5,10 @@ param (
     [bool]
     $update 
 )
-$current = Select-String -Path .\apply.sql -Pattern "EXEC cicd.SetCurrentVersion"
-$current = $current.Line.Replace("EXEC cicd.SetCurrentVersion", "").Replace("'", "").Trim()
-$previous = Select-String -Path .\apply.sql -Pattern "EXEC @check = cicd.CheckVersion "
-$previous = $previous.Line.Replace("EXEC @check = cicd.CheckVersion ", "").Replace("'", "").Trim()
+$current = Select-String -Path .\apply.sql -Pattern "EXEC cicd.SetVersion"
+$current = $current.Line.Replace("EXEC cicd.SetVersion", "").Replace("'", "").Trim()
+$previous = Select-String -Path .\apply.sql -Pattern "EXEC cicd.CheckVersion "
+$previous = $previous.Line.Replace("EXEC cicd.CheckVersion ", "").Replace("'", "").Trim()
 $next = (New-Guid).ToString()
 Write-Host "`r`nDatabase Versioning Tool`r`n========================"
 Write-Host "`r`nRollback Version: $previous"
